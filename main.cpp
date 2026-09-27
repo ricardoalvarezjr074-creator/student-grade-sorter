@@ -98,7 +98,7 @@ int main()
     Student scoreStudents[SIZE];
 
     ifstream fin;
-    fin.open("210-lab-13-grade.txt");
+    fin.open("210-lab-13-grades.txt");
 
     if (!fin.good())
     {
