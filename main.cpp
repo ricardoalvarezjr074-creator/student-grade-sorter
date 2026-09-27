@@ -141,3 +141,43 @@ int main()
     // sort original array by student ID
     selectionSortID(students, count);
     //output file 
+    ofstream fout;
+    fout.open("210-lab-13-output.txt");
+    if (!fout.good())
+    {
+        cout << "Error opening output file!" << endl;
+        return 1;
+    }
+    for (int i = 0; i < count; i++)
+    {
+        fout << students[i].studentID << " " << students[i].score << endl;
+    }
+    fout.close();
+    cout << "Sorted results written to " << endl;
+         << "210-lab-13-output.txt" << endl;
+
+    cout << endl;
+    cout << "--- Summary Statistics ---" << endl;
+
+    cout << "Minimum Score: "
+     << minScore
+      << " (Student ID: "
+         << minID << ")" << endl;
+    cout << "Maxium Score: "
+         << maxScore
+          << " (Student ID: "
+             << maxID << ")" << endl;
+
+             cout << "Mean Score: " 
+             << mean << endl;
+
+             cout << "Median Score: " 
+                  << medianScore
+                  << " (Student ID: "
+                  << medianID << ")" << endl;
+
+            cout << "Standard Deviation: " 
+                  << standardDeviation << endl;
+                
+                  return 0;
+}                  
