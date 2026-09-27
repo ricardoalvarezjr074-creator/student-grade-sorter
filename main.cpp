@@ -91,3 +91,53 @@ double findStandardDeviation(Student students[], int size, double mean)
     }
     return sqrt(total / size);
 }
+
+int main()
+{
+    Student students[SIZE];
+    Student scoreStudents[SIZE];
+
+    ifstream fin;
+    fin.open("210-lab-13-grade.txt");
+
+    if (!fin.good())
+    {
+        cout <<"File not found!" << endl;
+        return 1;       
+    }
+
+    int count = 0;
+    while (count < SIZE && 
+        fin >> students[count].studentID >> students[count].score)
+    {
+        count++;
+    }
+    fin.close();
+
+    cout << "Read " << count << " student records." << endl;
+
+    for (int i = 0; i < count; i++)
+    {
+        scoreStudents[i] = students[i]; 
+    }
+
+    int minIndex = findMinimum(students, count);
+    double minScore = students[minIndex].score;
+    int minID = students[minIndex].studentID;
+
+    int maxIndex = findMaximum(students, count);
+    double maxScore = students[maxIndex].score;
+    int maxID = students[maxIndex].studentID;
+
+    double mean = findMean(students, count);
+   double standardDeviation =
+    findStandardDeviation(students, count, mean);
+
+    selectionSortScore(scoreStudents, count);
+    int medianIndex = count / 2;
+    double medianScore = scoreStudents[medianIndex].score;
+    int medianID = scoreStudents[medianIndex].studentID;
+
+    // sort original array by student ID
+    selectionSortID(students, count);
+    //output file 
