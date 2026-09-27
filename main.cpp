@@ -61,3 +61,33 @@ int findMinimum(Student students[], int size)
     }
     return minIndex;
 }
+int findMaximum(Student students[], int size)
+{
+    int maxIndex = 0;
+    for (int i = 1; i < size; i++)
+    {
+        if (students[i].score > students[maxIndex].score)
+        {
+            maxIndex = i;
+        }
+    }
+    return maxIndex;
+}
+double findMean(Student students[], int size)
+{
+    double total = 0;
+    for (int i = 0; i < size; i++)
+    {
+        total += students[i].score;
+    }
+    return total / size;        
+}
+double findStandardDeviation(Student students[], int size, double mean)
+{
+    double total = 0;
+    for (int i = 0; i < size; i++)
+    {
+        total += pow(students[i].score - mean, 2);
+    }
+    return sqrt(total / size);
+}
